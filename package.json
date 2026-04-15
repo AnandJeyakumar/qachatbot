@@ -1,0 +1,35 @@
+{
+  "name": "QAChatbot",
+  "version": "1.0.0",
+  "description": "QA helper agent that generates comprehensive test scenarios from requirements",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "qachatbot": "./dist/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "jest",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "qa",
+    "testing",
+    "test-scenarios",
+    "ai",
+    "chatbot",
+    "claude"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.82.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/node": "^20.0.0",
+    "jest": "^30.3.0",
+    "ts-jest": "^29.4.9",
+    "typescript": "^5.4.0"
+  }
+}
