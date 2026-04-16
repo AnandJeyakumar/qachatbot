@@ -1,11 +1,11 @@
 {
-  "name": "QAChatbot",
+  "name": "qachatbot-ad",
   "version": "1.0.0",
   "description": "QA helper agent that generates comprehensive test scenarios from requirements",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "qachatbot": "./dist/cli.js"
+    "qachatbot": "dist/cli.js"
   },
   "scripts": {
     "build": "tsc",
