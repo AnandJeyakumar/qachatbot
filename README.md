@@ -68,7 +68,7 @@ npm install -g qachatbot-ad
 Set your Anthropic API key (get one at [console.anthropic.com](https://console.anthropic.com)):
 
 ```bash
-export ANTHROPIC_API_KEY="sk-ant-..."
+export ANTHROPIC_API_KEY="..."
 ```
 
 ---
@@ -202,7 +202,7 @@ interface TestScenario {
 Or pass it directly in options:
 
 ```typescript
-const bot = new QAChatbot({ apiKey: "..." });
+const bot = new QAChatbot({ apiKey: "..." }); // or use ANTHROPIC_API_KEY env var
 ```
 
 ---

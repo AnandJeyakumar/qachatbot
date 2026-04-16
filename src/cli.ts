@@ -173,6 +173,54 @@ async function interactiveMode(noMobile: boolean, model?: string) {
   rl.close();
 }
 
+async function ensureApiKey(): Promise<void> {
+  if (process.env.ANTHROPIC_API_KEY) return;
+
+  console.log(`\n${c.yellow}  No ANTHROPIC_API_KEY found.${c.reset}`);
+  console.log(`${c.dim}  Get your free key at: https://console.anthropic.com${c.reset}\n`);
+
+  // Mask input like a password — key is never shown on screen
+  const key = await readMasked(`${c.cyan}  Paste your Anthropic API key: ${c.reset}`);
+
+  if (!key.trim()) {
+    console.error(`${c.red}  API key is required. Exiting.${c.reset}`);
+    process.exit(1);
+  }
+
+  process.env.ANTHROPIC_API_KEY = key.trim();
+  console.log(`\n${c.green}  API key set for this session.${c.reset}`);
+  console.log(`${c.dim}  Tip: to skip this prompt next time, add to your shell profile:${c.reset}`);
+  console.log(`${c.dim}  export ANTHROPIC_API_KEY="..."${c.reset}\n`);
+}
+
+function readMasked(prompt: string): Promise<string> {
+  return new Promise((resolve) => {
+    process.stdout.write(prompt);
+    const rl = readline.createInterface({
+      input: process.stdin,
+      output: process.stdout,
+      terminal: true,
+    });
+
+    // Mute stdout so key characters are not echoed
+    (rl as any).stdoutMuted = true;
+    (rl as any)._writeToOutput = (str: string) => {
+      if ((rl as any).stdoutMuted && str && str !== "\r\n" && str !== "\n") {
+        process.stdout.write("*");
+      } else {
+        process.stdout.write(str);
+      }
+    };
+
+    rl.question("", (key) => {
+      (rl as any).stdoutMuted = false;
+      process.stdout.write("\n");
+      rl.close();
+      resolve(key);
+    });
+  });
+}
+
 async function main() {
   const args = process.argv.slice(2);
 
@@ -180,6 +228,8 @@ async function main() {
     printHelp();
     process.exit(0);
   }
+
+  await ensureApiKey();
 
   const noMobile = args.includes("--no-mobile");
   const model = getFlag(args, "--model");
