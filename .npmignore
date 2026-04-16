@@ -1,0 +1,28 @@
+# Don't publish these to npm
+
+# Source TypeScript (users get compiled dist/ only)
+src/
+__tests__/
+
+# Config files
+tsconfig.json
+jest.config.js
+.eslintrc*
+
+# Environment & secrets
+.env
+.env.*
+*.pem
+*.key
+*.cert
+credentials.json
+secrets.json
+
+# Logs & OS
+*.log
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

@@ -1,4 +1,46 @@
+# Dependencies
 node_modules/
+
+# Build output
 dist/
+
+# Environment & secrets — NEVER commit these
 .env
+.env.local
+.env.development
+.env.staging
+.env.production
+.env.*
+
+# API keys & credentials
+*.pem
+*.key
+*.cert
+*.p12
+*.pfx
+credentials.json
+secrets.json
+config.local.json
+
+# npm
 *.tgz
+.npmrc
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Test coverage
+coverage/
+.nyc_output/
