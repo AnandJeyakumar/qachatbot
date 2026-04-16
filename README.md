@@ -62,7 +62,7 @@ It also checks against **OWASP Top 10** (injection, broken access control, auth 
 ## Installation
 
 ```bash
-npm install -g QAChatbot
+npm install -g qachatbot-ad
 ```
 
 Set your Anthropic API key (get one at [console.anthropic.com](https://console.anthropic.com)):
@@ -143,7 +143,7 @@ qachatbot "Add search functionality" --format json
 ## Use as a Library
 
 ```typescript
-import { QAChatbot, analyzeRequirement } from "QAChatbot";
+import { QAChatbot, analyzeRequirement } from "qachatbot-ad";
 
 // One-shot — simple use case
 const result = await analyzeRequirement(
@@ -176,7 +176,7 @@ console.log(gherkin);
 ### TypeScript Types
 
 ```typescript
-import type { TestScenarios, TestScenario, AnalyzerOptions } from "QAChatbot";
+import type { TestScenarios, TestScenario, AnalyzerOptions } from "qachatbot-ad";
 
 interface TestScenario {
   id: string;                                          // e.g. "FE-NEG-001"
