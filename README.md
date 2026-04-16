@@ -202,7 +202,7 @@ interface TestScenario {
 Or pass it directly in options:
 
 ```typescript
-const bot = new QAChatbot({ apiKey: "sk-ant-..." });
+const bot = new QAChatbot({ apiKey: "..." });
 ```
 
 ---
